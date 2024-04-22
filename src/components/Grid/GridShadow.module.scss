@@ -1,0 +1,37 @@
+.shadow-wrapper {
+	flex: 1;
+
+	height: 100%;
+
+	position: relative;
+	background-image: -webkit-linear-gradient(transparent, transparent);
+	background-image: -moz-linear-gradient(transparent, transparent);
+	background-image: -o-linear-gradient(transparent, transparent);
+	background-image: linear-gradient(transparent, transparent);
+	&__top::before {
+		content: "";
+		height: 20px;
+		position: absolute;
+		top: 0;
+		bottom: auto;
+		width: 100%;
+		background-image: -webkit-linear-gradient(#12141b, transparent);
+		background-image: -moz-linear-gradient(#12141b, transparent);
+		background-image: -o-linear-gradient(#12141b, transparent);
+		background-image: linear-gradient(#12141b, transparent);
+		z-index: 1;
+	}
+	&__bottom::after {
+		content: "";
+		height: 20px;
+		width: 100%;
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		background-image: -webkit-linear-gradient(transparent, #12141b);
+		background-image: -moz-linear-gradient(transparent, #12141b);
+		background-image: -o-linear-gradient(transparent, #12141b);
+		background-image: linear-gradient(transparent, #12141b);
+		z-index: 1;
+	}
+}

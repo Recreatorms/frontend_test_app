@@ -1,0 +1,330 @@
+#root {
+	background-color: #12141b;
+
+	height: 100%;
+	width: 100%;
+
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 2rem;
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-direction: column;
+	gap: 1rem;
+
+	header {
+		flex-shrink: 0;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 3.5rem;
+		padding-right: 0.5rem;
+		box-sizing: border-box;
+
+		.search {
+			width: 332px;
+			border-radius: 1rem;
+			.Mui-focused {
+				border-radius: 1rem;
+			}
+			input {
+				outline: none !important;
+			}
+		}
+		.refresh {
+			width: 132px; //Hug (
+			height: 40px; //Hug (
+			padding: 4px 0px 4px 0px;
+			gap: 16px;
+
+			background-color: transparent;
+			background-repeat: no-repeat;
+			border: none;
+			cursor: pointer;
+			overflow: hidden;
+			outline: none;
+
+			color: #cf7b5a;
+		}
+	}
+	main {
+		height: calc(100% - 4.5rem);
+
+		flex-grow: 1;
+		width: 100%;
+		color: #dcd8d3;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 1rem;
+
+		p.accent {
+			color: #8c8988;
+			text-transform: capitalize;
+		}
+
+		.shadow-wrapper {
+			flex: 1;
+			position: relative;
+			background-image: -webkit-linear-gradient(transparent, transparent);
+			background-image: -moz-linear-gradient(transparent, transparent);
+			background-image: -o-linear-gradient(transparent, transparent);
+			background-image: linear-gradient(transparent, transparent);
+			&.top-shadow:before {
+				content: "";
+				height: 20px;
+				position: absolute;
+				top: 0;
+				bottom: auto;
+				width: 100%;
+				background-image: -webkit-linear-gradient(#12141b, transparent);
+				background-image: -moz-linear-gradient(#12141b, transparent);
+				background-image: -o-linear-gradient(#12141b, transparent);
+				background-image: linear-gradient(#12141b, transparent);
+				z-index: 1;
+			}
+
+			&.bottom-shadow:after {
+				content: "";
+				height: 20px;
+				width: 100%;
+				position: absolute;
+				top: auto;
+				bottom: 0;
+				background-image: -webkit-linear-gradient(transparent, #12141b);
+				background-image: -moz-linear-gradient(transparent, #12141b);
+				background-image: -o-linear-gradient(transparent, #12141b);
+				background-image: linear-gradient(transparent, #12141b);
+				z-index: 1;
+			}
+
+			.grid-wrapper {
+				height: 100%;
+				overflow-y: auto;
+				flex-grow: 1;
+				padding-right: 0.5rem;
+				scrollbar-gutter: stable;
+
+				// scrollbar-width: thin;
+				// scrollbar-color: #e8e8e81a #7a7a7a;
+
+				.grid {
+					height: 100%;
+					display: grid;
+					grid-gap: 1rem;
+					grid-template-columns: repeat(auto-fill, minmax(332px, 1fr));
+					grid-template-rows: repeat(auto-fill, minmax(196px, 0fr));
+
+					transition: all 0.5s;
+					.card {
+						background: #1a1c23;
+
+						border-radius: 1rem;
+
+						padding: 1.25rem;
+
+						display: flex;
+						flex-direction: column;
+						gap: 1rem;
+						position: relative;
+						border: 1px solid transparent;
+						.remove-button {
+							pointer-events: none;
+
+							background-color: transparent;
+							background-repeat: no-repeat;
+							border: none;
+							cursor: pointer;
+							overflow: hidden;
+							outline: none;
+
+							width: 100%;
+							height: 100%;
+
+							opacity: 0;
+							position: absolute;
+							top: 0;
+							right: 0;
+							background: #1e2027;
+
+							border-width: 0px 0px 1px 1px;
+
+							border-style: solid;
+
+							border-color: #ff2c4733;
+
+							width: 44px;
+							height: 44px;
+							gap: 8px;
+							border-radius: 0px 16px 0px 16px;
+							border: 0px 0px 1px 1px;
+							opacity: 0px;
+
+							rect {
+								fill: #ff2c488b;
+							}
+						}
+						box-sizing: border-box;
+						&.clicked {
+							border: 1px solid #cf7b5a33;
+							background: #1e2027;
+
+							.remove-button {
+								opacity: 1;
+								pointer-events: all;
+								&:hover {
+									rect {
+										fill: #ff2c47;
+									}
+									border-color: #ff002278;
+								}
+							}
+						}
+
+						.main-info {
+							display: flex;
+							flex-direction: row;
+							gap: 1rem;
+							.name {
+								display: flex;
+								flex-direction: column;
+								gap: 0.5rem;
+								h1 {
+									width: 100%;
+									margin: 0;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+									overflow: hidden;
+									font-size: 20px;
+									font-weight: 600;
+									line-height: 24px;
+									text-align: left;
+								}
+								p {
+									width: 100%;
+									margin: 0;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+									overflow: hidden;
+									font-size: 14px;
+									font-weight: 500;
+									line-height: 20px;
+									text-align: left;
+								}
+							}
+							img {
+								border-radius: 100%;
+								width: 3.5rem;
+								height: 3.5rem;
+							}
+						}
+
+						.other-info {
+							display: flex;
+							flex-direction: row;
+							gap: 1rem;
+							width: 100%;
+							p {
+								width: 100%;
+								margin: 0;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+								overflow: hidden;
+							}
+							.column-info,
+							.column-label {
+								display: flex;
+								flex-direction: column;
+								gap: 1rem;
+							}
+							.column-info {
+								overflow: hidden;
+							}
+						}
+					}
+				}
+			}
+		}
+		.sidebar-wrapper {
+			flex-shrink: 0;
+
+			width: 332px;
+			height: 100%;
+			max-height: 600px;
+
+			display: flex;
+			box-sizing: border-box;
+			overflow-y: auto;
+			padding-right: 0.5rem;
+			.sidebar {
+				height: min-content;
+				background: #1e2027;
+				border-radius: 1rem;
+				flex: 1;
+				padding: 1.5rem;
+				box-sizing: border-box;
+				max-height: 600px;
+
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+
+				h1 {
+					margin: 0;
+				}
+				.line {
+					width: 100%;
+					min-height: 1px;
+					background: #303238;
+				}
+
+				.age-groups,
+				.gender-groups {
+					margin: 0;
+					padding: 0;
+					h2 {
+						margin: 0;
+					}
+
+					.groups {
+						display: flex;
+						flex-direction: row;
+						gap: 1rem;
+						ul {
+							margin: 0;
+							padding: 0;
+							li {
+								display: flex;
+								gap: 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.skeleton {
+	background: #1a1c23;
+	/* filter: blur(1.5rem); */
+	z-index: 1;
+	border-radius: 1rem;
+	animation: changeBackground 3s infinite;
+
+	@keyframes changeBackground {
+		0% {
+			background: #1a1c23; /* светло-серый */
+		}
+		50% {
+			background: #22242b; /* серый */
+		}
+		100% {
+			background: #1a1c23; /* светло-серый */
+		}
+	}
+}

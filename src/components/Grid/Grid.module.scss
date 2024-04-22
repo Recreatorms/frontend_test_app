@@ -1,0 +1,21 @@
+.grid-wrapper {
+	flex-grow: 1;
+
+	height: 100%;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	padding-right: 0.5rem;
+	scrollbar-gutter: stable;
+}
+.grid {
+	height: 100%;
+	display: grid;
+
+	grid-gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(332px, 1fr));
+	grid-template-rows: repeat(auto-fill, minmax(196px, 0fr));
+
+	transition: all 0.5s;
+}
